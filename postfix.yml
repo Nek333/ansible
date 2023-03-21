@@ -1,0 +1,14 @@
+- hosts: all
+  become: true
+  tasks:
+
+    - name: install postfix
+      apt: pkg=postfix state=latest update_cache=true
+
+      tags:
+        - init postfix
+    - name: Remove postfix
+      apt: pkg=postfix state=latest update_cache=true
+
+      tags:
+        - tags drop postfix

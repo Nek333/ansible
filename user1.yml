@@ -1,0 +1,14 @@
+- hosts: all
+  become: true
+  tasks:
+  - name: Create user user1
+    user:
+      name: user1
+      shell: /bin/bash
+      groups: sudo
+      append: yes
+  - name: Добавить authorized key из файла id_ed3333.pub
+    authorized_key:
+      user: user1
+      state: present
+      key: "{{ lookup('file', '/home/sa/.ssh/id_ed3333.pub') }}"
