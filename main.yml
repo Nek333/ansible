@@ -1,0 +1,14 @@
+---
+# tasks file for test_r
+- name: install FTP server
+  apt: update_cache=yes name=vsftpd state=latest
+- name: delete vsftp.conf
+  file:
+    dest: /etc/vsftpd.conf
+    state: absent
+- name: copy vsftp.conf
+  synchronize:
+    src: /home/sa/vsftpd.conf
+    dest: /etc/vsftpd.conf
+- name: start FTP server
+  service: name=vsftpd state=restarted enabled=yes
