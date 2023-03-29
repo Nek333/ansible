@@ -1,0 +1,16 @@
+---
+# tasks file for dnsmasq
+  - name: install dnsmasq
+    apt: name=dnsmasq state=latest update_cache=yes 
+  - name: delete dnsmasq.conf
+    file:
+      dest: /etc/dnsmasq.conf 
+      state: absent
+  - name: copy dnsmasq.conf 
+    synchronize:
+      src: /home/sa/dnsmasq.conf 
+      dest: /etc/dnsmasq.conf 
+  - name: disable systemd-resolved
+    service: name=systemd-resolved state=stopped enabled=no
+  - name: start Dnsmasq
+    service: name=dnsmasq state=restarted enabled=yes

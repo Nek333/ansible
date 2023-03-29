@@ -1,0 +1,5 @@
+---
+# vars file for np
+http_host: "sf"
+http_conf: "sf.conf"
+http_port: "80"
