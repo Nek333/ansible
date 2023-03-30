@@ -1,0 +1,12 @@
+---
+# handlers file for http
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+    - name: restart php-fpm
+      command: service php8.1-fpm restart

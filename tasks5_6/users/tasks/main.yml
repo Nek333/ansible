@@ -1,0 +1,24 @@
+---
+# tasks file for users
+    - name: Add sudoers user2 to sudo group
+      user:
+        name=user2
+        groups=sudo
+        append=yes
+        state=present
+        createhome=yes
+
+    - name: creating a directory for user2
+      file:
+        path: /home/user2/.ssh/
+        state: directory
+
+    - name: copy ssh user2
+      synchronize:
+        src: /home/sa/.ssh/id_ed3333.pub 
+        dest: /home/user2/.ssh/id_ed3333.pub
+
+    - name: Set up authorized keys for the user
+      authorized_key: user=user2 key="{{item}}"
+      with_file:
+        - /home/sa/.ssh/id_ed3333.pub

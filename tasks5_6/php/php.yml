@@ -1,0 +1,7 @@
+---
+- hosts: php2
+  become: true
+  vars_files:
+    - /etc/ansible/roles/http/vars/main.yml
+  roles:
+    - php 

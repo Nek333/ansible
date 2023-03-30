@@ -1,0 +1,4 @@
+---
+# handlers file for php
+    - name: restart php-fpm
+      command: service php8.1-fpm restart

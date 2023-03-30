@@ -1,0 +1,7 @@
+---
+# vars file for http
+http_host: "sf"
+http_conf: "sf.conf"
+http_port: "80"
+http_ip_php: "10.2.0.3"
+http_port_php: "9000"
